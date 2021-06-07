@@ -1,0 +1,29 @@
+{
+  "name": "node0",
+  "version": "1.0.0",
+  "description": "This repo is used to store the practical exercises of NodeJs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chungnguyen7786/nodeJsStudy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chungnguyen7786/nodeJsStudy/issues"
+  },
+  "homepage": "https://github.com/chungnguyen7786/nodeJsStudy#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nanoid": "^3.1.23",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "lowdb": "^1.0.0",
+    "nodemon": "^2.0.7"
+  }
+}
