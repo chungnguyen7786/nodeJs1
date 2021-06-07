@@ -5,48 +5,47 @@ const db = require('../db.js')
 
 const router = express.Router()
 
-// const users = db.get('users').value();
-
 router.get('/', (req, res) => {
-    res.render('users/users', {
-        users: db.get('users').value()
+    res.render('books/books', {
+        books: db.get('books').value()
     });
-})                                                                
+})                                                                 
 
 router.get('/search', (req, res) => {
-    let users = db.get('users').value();
+    let books = db.get('books').value();
     let q = req.query.q
-    let matchedUsers = users.filter((user) => {
-        return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1
+    let matchedBooks = books.filter((book) => {
+        return book.title
+            .toLowerCase()
+            .indexOf(q.toLowerCase()) !== -1
     })
-    res.render('users/users', {
-        users: matchedUsers,
+    res.render('books/books', {
+        books: matchedBooks,
         q: q
     })
 })
-
 router.get('/create', (req, res) => {
-    res.render('users/createUser');
+    res.render('books/createBook');
 });
 
 router.get('/:id', (req, res) => {
-    let users = db.get('users').value();
+    let books = db.get('books').value();
     let id = req.params.id;
     db.read()
-    let user = users.find((user) => {
-        return user.id === id
+    let book = books.find((book) => {
+        return book.id === id
     })
-    res.render('./users/view', {
-        user: user
+    res.render('./books/view', {
+        book: book
     }) 
 })
 
 router.post('/create', (req, res) => {
     req.body.id = nanoid()
-    db.get('users')
+    db.get('books')
         .push(req.body)
         .write()    
-    res.redirect('/users');
+    res.redirect('/books');
 });
 
 module.exports = router

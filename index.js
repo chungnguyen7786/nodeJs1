@@ -1,6 +1,7 @@
 const express = require('express')
 
 const userRoute = require ('./routes/user.route.js')
+const bookRoute = require ('./routes/book.route.js')
 
 const port = 4000
 
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/users', userRoute)
+app.use('/books', bookRoute)
 
 app.listen(port, () => {
     console.log('server listening on port'+ port)

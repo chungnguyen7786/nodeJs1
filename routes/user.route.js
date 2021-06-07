@@ -17,7 +17,9 @@ router.get('/search', (req, res) => {
     let users = db.get('users').value();
     let q = req.query.q
     let matchedUsers = users.filter((user) => {
-        return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1
+        return user.name
+            .toLowerCase()
+            .indexOf(q.toLowerCase()) !== -1
     })
     res.render('users/users', {
         users: matchedUsers,
