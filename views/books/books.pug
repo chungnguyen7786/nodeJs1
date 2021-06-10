@@ -1,19 +1,21 @@
-h1 Books 
+extends ../layouts/common.pug
+block content
+    h1 Books 
 
-a(href="/books/create") Add new book
+    a(href="/books/create") Add new book
 
-br
-br
+    br
+    br
 
-form(action="/books/search" method="GET") 
-    input(type="text" name="q" value=q)
-    button Search
+    form(action="/books/search" method="GET") 
+        input(type="text" name="q" value=q)
+        button Search
 
-.book-list 
-    each book in books
-        .book
-            span= book.title 
-            span= " - Author: " + book.author 
-            span &nbsp;&nbsp;&nbsp;&nbsp;
-            a(href="/books/"+ book.id) View this book
-        
+    .book-list 
+        each book in books
+            .book
+                span= book.title 
+                span= " - Author: " + book.author 
+                span &nbsp;&nbsp;&nbsp;&nbsp;
+                a(href="/books/"+ book.id) View this book
+            
