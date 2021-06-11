@@ -14,14 +14,14 @@ app.set('views', './views')
 
 
 app.get('/', (req, res) => { 
-    res.render('index', {
-        name: 'Chung Nguyen'
-    });
+  res.render('index', {
+    name: 'Chung Nguyen'
+  });
 })
 
 app.use('/users', userRoute)
 app.use('/books', bookRoute)
 
 app.listen(port, () => {
-    console.log('server listening on port'+ port)
+  console.log('server listening on port'+ port)
 })
