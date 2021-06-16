@@ -1,0 +1,18 @@
+extends ../layouts/common.pug
+block content
+  h1 Update user  
+
+  form(action="/users/update/"+ user.id, method="POST")
+    .form-group
+      label= user.name + ' -Id:' + user.id
+      br
+      label(for="name") New Name:       
+      input#name.form-control(name="name" type="text" value=value ? value.name : "")
+      br
+      label(for="email") New Email:       
+      input#email.form-control(name="email" type="text" value=value ? value.email : "")
+      br
+      label(for="phone") New Phone:       
+      input#phone.form-control(name="phone" type="text" value=value ? value.phone : "")
+      br
+      button.btn.btn-primary Update

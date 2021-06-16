@@ -11,10 +11,20 @@ block content
     input(type="text" name="q" value=q)
     button Search
 
-  ul 
-    each user in users
-      li 
-        span= user.name 
-        span &nbsp;&nbsp;&nbsp;
-        a(href="/users/"+ user.id) View
+  table.table.text-center
+      tr
+        th Avatar
+        th Name
+        th Action
+      each user, index in users
+       tr
+        th
+          img(src= user.avatarUrl)
+        th= user.name
+        th
+           a(href="/users/view/"+ user.id, class="btn btn-primary ml-1") View
+           span &nbsp;
+           a(href="/users/update/"+ user.id, class="btn btn-warning ml-1") Update
+           span &nbsp;
+           a(href="/users/delete/"+ user.id, class="btn btn-danger") Delete
     
