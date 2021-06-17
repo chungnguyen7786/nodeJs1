@@ -1,7 +1,6 @@
 const express = require('express')
 
 const controller = require('../controllers/user.controller')
-
 const validate = require('../validate/user.validate')
 
 const router = express.Router()
@@ -23,6 +22,6 @@ router.get('/view/:id', controller.view)
 router.get('/delete/:id', controller.delete)
 
 router.get('/update/:id', controller.update)
-router.post('/update/:id', controller.putUpdate)
+router.post('/update/:id', controller.postUpdate)
 
 module.exports = router

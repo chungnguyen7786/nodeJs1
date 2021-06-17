@@ -64,7 +64,7 @@ module.exports.update = (req, res) => {
   });
 }
 
-module.exports.putUpdate = (req, res) => {
+module.exports.postUpdate = (req, res) => {
   let id = req.params.id
   if (req.body.name) {
     db.get('users')

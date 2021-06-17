@@ -3,6 +3,9 @@ var cookieParser = require('cookie-parser')
 
 const userRoute = require ('./routes/user.route.js')
 const bookRoute = require ('./routes/book.route.js')
+const authRoute = require ('./routes/auth.route.js')
+
+const authMiddleware = require('./middlewares/auth.middleware')
 
 const port = 4000
 
@@ -22,8 +25,9 @@ app.get('/', (req, res) => {
   });
 })
 
-app.use('/users', userRoute)
-app.use('/books', bookRoute)
+app.use('/users', authMiddleware.requireAuth, userRoute)
+app.use('/books', authMiddleware.requireAuth, bookRoute)
+app.use('/auth', authRoute)
 
 app.listen(port, () => {
   console.log('server listening on port'+ port)
