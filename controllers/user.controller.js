@@ -28,7 +28,11 @@ module.exports.create = (req, res) => {
 
 module.exports.postCreate = (req, res) => {
   req.body.id = nanoid()
-  req.body.avatarUrl = 'https://picsum.photos/50'
+  if (!req.file) {
+    req.body.avatarUrl = "https://picsum.photos/50"
+  } else {    
+    req.body.avatarUrl = req.file.path.split("\\").slice(1).join("\\")
+  }
   
   db.get('users')
     .push(req.body)
