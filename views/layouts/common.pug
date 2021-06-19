@@ -18,7 +18,9 @@ html
               a.nav-link(href='/books') Books
             li.nav-item
               a.nav-link(href='/auth/login') Login
-    .container.pt-5 
+        if user
+          p=user.name      
+    .container.pt-5
       block content
 
 

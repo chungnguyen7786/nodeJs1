@@ -11,12 +11,37 @@ block content
     input(type="text" name="q" value=q)
     button Search
 
-  .book-list 
+  .book-list(style='display: flex; flex-wrap: wrap; flex-direction: row;justify-content: center;')
     each book in books
-      .book
-        span= book.title 
-        span= " - Author: " + book.author 
-        span &nbsp;&nbsp;&nbsp;&nbsp;
-        a(href="/books/"+ book.id) View this book
+      .card(style='width: 18rem;')
+        img.card-img-top(src=book.image, alt='book cover')
+        .card-body
+          h5.card-title=book.title
+          p.card-text=book.des
+          a.btn.btn-primary(href="/books/"+ book.id) View this book
+
+  nav.mt-3
+      ul.pagination.justify-content-center
+        li.page-item
+            a.page-link(href='/books?page=1') First
+        li.page-item(class= page === 1 ? 'disabled' : '')
+          a.page-link(href='/books?page=' + (page - 1)) &laquo
+        if (page === 1 || page === 2) 
+          - for (let i = 1; i <= 3; i++)
+            li.page-item(class= page === i ? 'active' : '')
+              a.page-link(href='/books?page=' + i)= i
+        else if (page == lengthPage -1 || page == lengthPage)
+          - for (let i = 2; i >= 0; i--)
+            li.page-item(class= page === (lengthPage - i) ? 'active' : '')
+              a.page-link(href='/books?page=' + (lengthPage - i))= lengthPage - i
+        else      
+          - for (let i = page - 1; i <= page + 1; i++)
+              li.page-item(class= page === i ? 'active' : '')
+                a.page-link(href='/books?page=' + i)= i
+        li.page-item(class= page === lengthPage ? 'disabled' : '')
+          a.page-link(href='/books?page=' + (page + 1)) &raquo
+        li.page-item
+            a.page-link(href='/books?page=' + lengthPage) Last
+
             
                  

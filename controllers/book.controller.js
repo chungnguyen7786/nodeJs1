@@ -3,8 +3,16 @@ const { nanoid } = require('nanoid')
 const db = require('../db.js')
 
 module.exports.index = (req, res) => {
+  let books = db.get('books').value()
+  let page = parseInt(req.query.page) || 1
+  let perPage = 8
+  let start = (page -1) * perPage
+  let end = page * perPage
+
   res.render('books/books', {
-    books: db.get('books').value()
+    books: db.get('books').value().slice(start, end),
+    page,
+    lengthPage: Math.ceil(books.length/perPage)
   });
 }                                                                 
 
